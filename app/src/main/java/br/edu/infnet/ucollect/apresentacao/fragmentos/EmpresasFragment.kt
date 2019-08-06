@@ -1,4 +1,4 @@
-package br.edu.infnet.ucollect.Fragmentos
+package br.edu.infnet.ucollect.apresentacao.fragmentos
 
 
 import android.os.Bundle

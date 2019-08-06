@@ -1,7 +1,8 @@
-package br.edu.infnet.ucollect
+package br.edu.infnet.ucollect.apresentacao.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.edu.infnet.ucollect.R
 
 class MainActivity : AppCompatActivity() {
 
