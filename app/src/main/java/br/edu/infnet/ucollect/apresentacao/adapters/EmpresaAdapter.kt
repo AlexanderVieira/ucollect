@@ -26,7 +26,8 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
         if (holder is EmpresaViewHolder){
             holder.nome.text = empresa.nome
             holder.cnpj.text = empresa.cnpj.toString()
-            holder.endereco.text = empresa.telefone
+            holder.endereco.text = empresa.endereco
+            holder.telefone.text = empresa.telefone
             holder.email.text = empresa.email
         }
     }
