@@ -20,6 +20,11 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
 
     override fun getItemCount() = empresas.size
 
+    fun setData(newEmpresas: List<Empresa>){
+        empresas = newEmpresas
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val empresa = empresas[position]
