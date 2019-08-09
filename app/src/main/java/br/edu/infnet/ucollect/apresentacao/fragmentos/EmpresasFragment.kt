@@ -38,6 +38,14 @@ class EmpresasFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_empresas, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setUpRecyclerView()
+        subscribe()
+    }
+
+
     /*private fun setUpListeners(){
         send_message_button.setOnClickListener {
             val message = chat_edittext.text.toString()
