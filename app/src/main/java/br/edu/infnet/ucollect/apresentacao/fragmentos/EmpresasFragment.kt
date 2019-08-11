@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,12 +29,20 @@ class EmpresasFragment : Fragment() {
 
     private lateinit var empresaViewModel: EmpresaViewModel
 
+    val empresaAdapter: EmpresaAdapter by lazy {
+        EmpresaAdapter()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        // Inicia o ViewModel
         activity?.let {
-            empresaViewModel = ViewModelProviders.of(it).get(EmpresaViewModel::class.java)
+            empresaViewModel = ViewModelProviders
+                .of(it)
+                .get(EmpresaViewModel::class.java)
         }
         return inflater.inflate(R.layout.fragment_empresas, container, false)
     }
@@ -56,17 +65,25 @@ class EmpresasFragment : Fragment() {
                 ChatMessage(message, Date().time, true))
         }
     }*/
-
+    // Define a RecycleView
     private fun setUpRecyclerView(){
-        recycler_view_id.adapter = EmpresaAdapter()
-        recycler_view_id.layoutManager = LinearLayoutManager(context)
+        recycler_view_id.adapter = empresaAdapter
+
+        activity?.let {
+            recycler_view_id.layoutManager = LinearLayoutManager(it)
+        }
     }
 
+    // Observa o estado do viewModel
     private fun subscribe(){
-        empresaViewModel.empresas.observe(this, Observer {empresas->
+        empresaViewModel.getEmpresas().observe(this, Observer {empresas->
             val empresaAdapter = recycler_view_id.adapter
             if (empresaAdapter is EmpresaAdapter){
-                empresaAdapter.setData(empresas)
+                if(empresas.isEmpty()){
+                    Toast.makeText(context, "Nenhuma Empresa cadastrada.", Toast.LENGTH_SHORT).show()
+                }else{
+                    empresaAdapter.setData(empresas)
+                }
             }
         })
     }
