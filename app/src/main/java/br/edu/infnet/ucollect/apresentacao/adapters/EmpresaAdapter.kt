@@ -3,6 +3,7 @@ package br.edu.infnet.ucollect.apresentacao.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.infnet.ucollect.R
@@ -34,6 +35,7 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
             holder.endereco.text = empresa.endereco
             holder.telefone.text = empresa.telefone
             holder.email.text = empresa.email
+            holder.imagem.setImageResource(empresa.imagem)
         }
     }
 
@@ -44,5 +46,6 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
         val endereco: TextView = itemView.findViewById(R.id.textView_card_endereco)
         val telefone: TextView = itemView.findViewById(R.id.textView_card_telefone)
         val email: TextView = itemView.findViewById(R.id.textView_card_email)
+        val imagem: ImageView = itemView.findViewById(R.id.imageView_card_empresa)
     }
 }

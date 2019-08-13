@@ -5,7 +5,10 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    tools:context=".apresentacao.fragmentos.EmpresasFragment"
-                                                   android:id="@+id/root_recycler_view_id">
+                                                   android:id="@+id/root_recycler_view_id"
+                                                   android:background="@color/fundoCard"
+                                                   android:paddingLeft="8dp"
+                                                   android:paddingRight="8dp">
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="395dp"
             android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
@@ -13,4 +16,5 @@
             android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp" tools:listitem="@layout/empresa_card" android:id="@+id/recycler_view_id"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

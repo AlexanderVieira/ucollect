@@ -5,4 +5,5 @@ class Empresa(val empresaId: Int,
               val cnpj: Long,
               val endereco: String,
               val telefone: String,
-              val email: String)
+              val email: String,
+              val imagem: Int)

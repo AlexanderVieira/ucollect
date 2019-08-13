@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.edu.infnet.ucollect.dominio.modelos.Empresa
 import br.edu.infnet.ucollect.infraestrutura.repositorios.EmpresaRepository
-import br.edu.infnet.ucollect.infraestrutura.repositorios.getEmpresas
 
 class EmpresaViewModel: ViewModel() {
 
