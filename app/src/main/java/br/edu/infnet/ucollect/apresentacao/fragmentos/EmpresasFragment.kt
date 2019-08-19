@@ -16,11 +16,6 @@ import br.edu.infnet.ucollect.apresentacao.adapters.EmpresaAdapter
 import br.edu.infnet.ucollect.apresentacao.viewmodel.EmpresaViewModel
 import kotlinx.android.synthetic.main.fragment_empresas.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
  * A simple [Fragment] subclass.
  *
@@ -54,7 +49,6 @@ class EmpresasFragment : Fragment() {
         subscribe()
     }
 
-
     /*private fun setUpListeners(){
         send_message_button.setOnClickListener {
             val message = chat_edittext.text.toString()
@@ -65,6 +59,7 @@ class EmpresasFragment : Fragment() {
                 ChatMessage(message, Date().time, true))
         }
     }*/
+
     // Define a RecycleView
     private fun setUpRecyclerView(){
         recycler_view_id.adapter = empresaAdapter
