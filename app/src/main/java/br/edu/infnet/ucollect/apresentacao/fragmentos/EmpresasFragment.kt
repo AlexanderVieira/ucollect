@@ -1,6 +1,5 @@
 package br.edu.infnet.ucollect.apresentacao.fragmentos
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,15 +15,6 @@ import br.edu.infnet.ucollect.apresentacao.adapters.EmpresaAdapter
 import br.edu.infnet.ucollect.apresentacao.viewmodel.EmpresaViewModel
 import kotlinx.android.synthetic.main.fragment_empresas.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class EmpresasFragment : Fragment() {
 
     private lateinit var empresaViewModel: EmpresaViewModel
@@ -54,17 +44,6 @@ class EmpresasFragment : Fragment() {
         subscribe()
     }
 
-
-    /*private fun setUpListeners(){
-        send_message_button.setOnClickListener {
-            val message = chat_edittext.text.toString()
-            // limpa o campo de mensagens
-            chat_edittext.setText("")
-            val oldMessages = chatViewModel.messages.value
-            chatViewModel.messages.value = oldMessages?.plus(
-                ChatMessage(message, Date().time, true))
-        }
-    }*/
     // Define a RecycleView
     private fun setUpRecyclerView(){
         recycler_view_id.adapter = empresaAdapter
@@ -88,5 +67,14 @@ class EmpresasFragment : Fragment() {
         })
     }
 
+    companion object {
+        fun newInstance(): EmpresasFragment{
+            val empresasFragment = EmpresasFragment()
+            /*residuosFragment.arguments = Bundle().apply {
+                // salva dados do parâmetro
+            }*/
+            return empresasFragment
+        }
+    }
 
 }

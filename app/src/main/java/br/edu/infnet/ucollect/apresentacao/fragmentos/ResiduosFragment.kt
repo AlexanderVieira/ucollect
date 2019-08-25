@@ -1,6 +1,5 @@
 package br.edu.infnet.ucollect.apresentacao.fragmentos
 
-
 import android.os.Bundle
 import android.text.Layout
 import androidx.fragment.app.Fragment
@@ -23,15 +22,6 @@ import kotlinx.android.synthetic.main.fragment_empresas.*
 import kotlinx.android.synthetic.main.fragment_residuos.*
 import kotlinx.android.synthetic.main.residuo_card.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class ResiduosFragment : Fragment() {
 
     private lateinit var residuoViewModel: ResiduoViewModel
@@ -61,7 +51,6 @@ class ResiduosFragment : Fragment() {
         subscribe()
     }
 
-
     private fun setUpRecyclerView() {
 
         recycler_view_card_residuos.adapter = residuoAdapter
@@ -70,7 +59,6 @@ class ResiduosFragment : Fragment() {
             recycler_view_card_residuos.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         }
     }
-
 
     private fun subscribe() {
         residuoViewModel.getResiduos().observe(this, Observer {residuos ->
@@ -87,5 +75,14 @@ class ResiduosFragment : Fragment() {
         })
     }
 
+    companion object {
+        fun newInstance(): ResiduosFragment{
+            val residuosFragment = ResiduosFragment()
+            /*residuosFragment.arguments = Bundle().apply {
+                // salva dados do parâmetro
+            }*/
+            return residuosFragment
+        }
+    }
 
 }
