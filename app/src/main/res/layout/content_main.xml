@@ -10,6 +10,4 @@
         tools:context=".apresentacao.activities.MainActivity"
         android:id="@+id/menu_content">
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
