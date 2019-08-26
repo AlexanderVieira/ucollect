@@ -11,7 +11,10 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.view.View
+import androidx.fragment.app.FragmentTransaction
 import br.edu.infnet.ucollect.R
+import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.ResiduosFragment
 
@@ -23,6 +26,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        self = this
 
         /*val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
@@ -102,4 +107,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction().replace(R.id.menu_content, empresasFragment).commit()
     }
 
+
+    public fun detalhesEmpresa(dados: ArrayList<String>){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val detalhesEmpresaFragment = DetalhesEmpresaFragment.newInstance()
+        val args = Bundle()
+        args.putStringArrayList("dados", dados)
+        detalhesEmpresaFragment.arguments = args
+        fragmentTransaction.replace(R.id.menu_content,detalhesEmpresaFragment)
+        fragmentTransaction.addToBackStack("anterior")
+        fragmentTransaction.commit()
+    }
+
+    companion object {
+        lateinit var self: MainActivity
+    }
+
 }
+
+
