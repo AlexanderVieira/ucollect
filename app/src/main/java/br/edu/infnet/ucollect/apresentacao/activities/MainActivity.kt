@@ -1,5 +1,7 @@
 package br.edu.infnet.ucollect.apresentacao.activities
 
+import android.app.Dialog
+import android.os.AsyncTask
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -27,6 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        NetWorkTask(this).execute()
+
         self = this
 
         /*val fab: FloatingActionButton = findViewById(R.id.fab)
@@ -43,6 +47,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+    }
+
+    class NetWorkTask(var act: MainActivity): AsyncTask<Void, Void, Void>(){
+
+        var dialog =  Dialog(act, android.R.style.Theme_Translucent_NoTitleBar)
+
+        override fun onPreExecute() {
+
+            val view = act.layoutInflater.inflate(R.layout.loading_screen, null)
+            dialog.setContentView(view)
+            dialog.setCancelable(false)
+            dialog.show()
+            super.onPreExecute()
+        }
+
+        override fun doInBackground(vararg p0: Void?): Void? {
+            Thread.sleep(3000)
+            return null
+        }
+
+        override fun onPostExecute(result: Void?) {
+            super.onPostExecute(result)
+            dialog.dismiss()
+        }
     }
 
     override fun onBackPressed() {
@@ -115,6 +143,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     companion object {
         lateinit var self: MainActivity
     }
+
 
 }
 

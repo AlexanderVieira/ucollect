@@ -6,13 +6,13 @@
                                    android:layout_marginTop="8dp" android:layout_marginRight="8dp"
                                    android:layout_marginLeft="8dp"
                                    app:cardBackgroundColor="#FFFFFF"
-                                   android:outlineProvider="none" app:cardCornerRadius="25dp">
+                                   android:outlineProvider="none"
+                                   app:cardCornerRadius="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="wrap_content"
                                                        android:id="@+id/layout_child_residuo_card_view_id"
-                                                       android:background="@drawable/dotted"
-                                                       android:padding="5dp">
+                                                       android:background="@drawable/dotted">
 
         <ImageView
                 android:layout_width="0dp"
