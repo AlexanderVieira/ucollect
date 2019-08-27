@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     class NetWorkTask(var act: MainActivity): AsyncTask<Void, Void, Void>(){
 
-        var dialog =  Dialog(act, android.R.style.Theme_Translucent_NoTitleBar)
+        var dialog =  Dialog(act, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
 
         override fun onPreExecute() {
 
