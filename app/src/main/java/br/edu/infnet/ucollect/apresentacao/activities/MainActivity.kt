@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navView.setNavigationItemSelectedListener(this)
     }
 
+    // task background
     class NetWorkTask(var act: MainActivity): AsyncTask<Void, Void, Void>(){
 
         var dialog =  Dialog(act, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
@@ -83,7 +84,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
