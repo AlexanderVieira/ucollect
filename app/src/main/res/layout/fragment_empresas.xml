@@ -6,7 +6,7 @@
                                                    android:layout_height="wrap_content"
                                                    tools:context=".apresentacao.fragmentos.EmpresasFragment"
                                                    android:id="@+id/root_recycler_view_id"
-                                                   android:background="@color/fundoCard"
+                                                   android:background="#ffffff"
                                                    android:paddingLeft="8dp"
                                                    android:paddingRight="8dp">
     <androidx.recyclerview.widget.RecyclerView
