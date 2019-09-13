@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "617397759068",
+    "firebase_url": "https://ucollect-86c15.firebaseio.com",
+    "project_id": "ucollect-86c15",
+    "storage_bucket": "ucollect-86c15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617397759068:android:591197b48df035970a0a99",
+        "android_client_info": {
+          "package_name": "br.edu.infnet.ucollect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617397759068-5c9es5dlcs3unjd8jpi5nkgkn6da8o3d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.infnet.ucollect",
+            "certificate_hash": "4e8f26bfa91b0cb3fbe9dbb8fd7650c72025b2c8"
+          }
+        },
+        {
+          "client_id": "617397759068-tc6e65407couu1brvs66b5tash6is0s8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.infnet.ucollect",
+            "certificate_hash": "5f59824086525d6e9b912971b6c2249796453abf"
+          }
+        },
+        {
+          "client_id": "617397759068-bij6mg720g707v44db9bgvksnuqmjnpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMF3GDI10bgTkrtHPTqBRzA0NRTsA8z6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617397759068-bij6mg720g707v44db9bgvksnuqmjnpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
