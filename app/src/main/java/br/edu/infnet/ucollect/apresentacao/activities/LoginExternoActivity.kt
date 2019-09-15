@@ -20,12 +20,8 @@ class LoginExternoActivity : AppCompatActivity() {
         tv_email_login_externo.setOnClickListener {
             var resultIntentEmail = Intent(this@LoginExternoActivity, EmailFormActivity::class.java )
             startActivity(resultIntentEmail)
-            //finish()
+            finish()
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
 }

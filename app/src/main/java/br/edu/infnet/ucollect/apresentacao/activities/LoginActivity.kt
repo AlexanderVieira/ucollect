@@ -23,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         mAuth = FirebaseAuth.getInstance()
+        var emailRecuperado = intent.getStringExtra(EmailFormActivity.EXTRA_EMAIL_USUARIO)
+        edtxt_email_login.setText(emailRecuperado)
         setListeners()
     }
 
@@ -40,28 +42,28 @@ class LoginActivity : AppCompatActivity() {
             Log.i(TAG, email)
             Log.i(TAG, senha)
 
-                mAuth.signInWithEmailAndPassword(email, senha)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            Log.i(TAG, "signInWithEmail:success")
-                            val user = mAuth.currentUser
-                            updateUI(user)
-                            var resultIntent = Intent(this, MainActivity::class.java )
-                            startActivity(resultIntent)
-                            //finish()
-                        } else {
-                            Log.i(TAG, "signInWithEmail:failure", task.exception)
-                            //showToast(loginActivity, "Usuário e/ou senha inválidos!")
-                            updateUI(null)
-                        }
+            mAuth.signInWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Log.i(TAG, "signInWithEmail:success")
+                        val user = mAuth.currentUser
+                        updateUI(user)
+                        /*var resultIntent = Intent(baseContext, MainActivity::class.java )
+                        startActivity(resultIntent)*/
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    } else {
+                        Log.i(TAG, "signInWithEmail:failure", task.exception)
+                        //showToast(loginActivity, "Usuário e/ou senha inválidos!")
+                        updateUI(null)
                     }
-            }
+                }
+            //
+        }
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
-            /*var resultIntent = Intent(this@LoginActivity, MainActivity::class.java )
-            startActivity(resultIntent)*/
             showSnackbar(btn_login, "Olá " + currentUser.email!!)
         }
         else{
@@ -78,8 +80,4 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
 }

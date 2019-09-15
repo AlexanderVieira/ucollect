@@ -20,9 +20,11 @@ import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.ResiduosFragment
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        NetWorkTask(this).execute()
+        mAuth = FirebaseAuth.getInstance()
+        //NetWorkTask(this).execute()
 
         self = this
 
@@ -51,7 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     // task background
-    class NetWorkTask(var act: MainActivity): AsyncTask<Void, Void, Void>(){
+    /*class NetWorkTask(var act: MainActivity): AsyncTask<Void, Void, Void>(){
 
         var dialog =  Dialog(act, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
 
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onPostExecute(result)
             dialog.dismiss()
         }
-    }
+    }*/
 
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -148,6 +151,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun logout(){
         var resultIntent = Intent(this, LoginActivity::class.java )
         startActivity(resultIntent)
+        mAuth.signOut()
         finish()
     }
 

@@ -40,7 +40,7 @@ class RegistroActivity : AppCompatActivity() {
         btn_cadastrar_registro.setOnClickListener {
 
             var nome = edtxt_nome_registro.text.toString()
-            var email = intent.getStringExtra("email")
+            var email = intent.getStringExtra(EmailFormActivity.EXTRA_CAMPO_EMAIL)
             var senha = edtxt_senha_registro.text.toString()
             var confirmaSenha = edtxt_confirma_senha_registro.text.toString()
 
@@ -64,11 +64,12 @@ class RegistroActivity : AppCompatActivity() {
                                         contatoRef.child(user.uid).setValue(myContato)
                                         var resultIntentLogin = Intent(baseContext, LoginActivity::class.java )
                                         startActivity(resultIntentLogin)
+                                        finish()
                                     }
 
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                                    Log.i(TAG, "createUserWithEmail:failure", task.exception)
                                     Toast.makeText(baseContext, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show()
                                     updateUI(null)
@@ -92,8 +93,6 @@ class RegistroActivity : AppCompatActivity() {
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
-            /*var resultIntentLogin = Intent(this@RegistroActivity, LoginActivity::class.java )
-            startActivity(resultIntentLogin)*/
             showSnackbar(btn_cadastrar_registro, "Olá " + currentUser.email!!)
         }
         else{
@@ -108,11 +107,6 @@ class RegistroActivity : AppCompatActivity() {
 
     private fun showToast(context: Context, msg:String){
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 
 }
