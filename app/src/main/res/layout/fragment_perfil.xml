@@ -25,7 +25,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:textColor="@color/verdeTexto"
     />
     <Button
-            android:text="Adicionar item"
+            android:text="Add item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/perfil_adicionar_button" app:backgroundTint="@color/verde_claro"

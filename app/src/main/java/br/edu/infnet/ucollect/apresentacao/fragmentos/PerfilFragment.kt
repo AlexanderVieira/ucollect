@@ -1,6 +1,7 @@
 package br.edu.infnet.ucollect.apresentacao.fragmentos
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 import br.edu.infnet.ucollect.R
+import br.edu.infnet.ucollect.apresentacao.activities.AdicionarObjetoActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_perfil.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -25,6 +27,10 @@ class PerfilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        setUpListeners()
+
         var currentUser = mAuth.currentUser
 
         activity?.let {
@@ -34,6 +40,18 @@ class PerfilFragment : Fragment() {
                 perfil_nome_textView.setText(email)
 
             }
+        }
+    }
+
+    private fun setUpListeners(){
+        perfil_adicionar_button.setOnClickListener {
+
+            activity?.let {
+
+                var intent = Intent(it, AdicionarObjetoActivity::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 

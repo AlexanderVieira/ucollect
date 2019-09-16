@@ -34,8 +34,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setListeners() {
 
+        // cria um listener que dispara a função ao ser clicado
         cadastrar_novo_button.setOnClickListener {
+
+            // cria uma variável do tipo Intent com o contexto e a classe da nova activity
             var intent = Intent(this, EmailFormActivity::class.java)
+
+            // chama o método para fazer a transição para a outra activity
             startActivity(intent)
         }
 
