@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         setListeners()
+        //dsdsdsds
     }
 
     override fun onStart() {
