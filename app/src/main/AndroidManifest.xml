@@ -12,16 +12,19 @@
         <activity android:name=".apresentacao.activities.AdicionarObjetoActivity"></activity>
         <activity android:name=".apresentacao.activities.LoginActivity"></activity>
         <activity android:name=".apresentacao.activities.EmailFormActivity"></activity>
+
         <activity android:name=".apresentacao.activities.RegistroActivity"></activity>
-        <activity android:name=".apresentacao.activities.LoginExternoActivity"></activity>
-        <activity
-                android:name=".apresentacao.activities.MainActivity"
-                android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".apresentacao.activities.LoginExternoActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".apresentacao.activities.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

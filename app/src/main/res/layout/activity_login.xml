@@ -20,14 +20,14 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail" android:id="@+id/edtxt_email_login" android:background="@drawable/dotted"/>
+                android:hint="@string/e_mail" android:id="@+id/edtxt_email_login" android:background="@drawable/dotted"/>
     </com.google.android.material.textfield.TextInputLayout>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/edtxt_senha_login" android:hint="Senha"
+            android:id="@+id/edtxt_senha_login" android:hint="@string/senha"
             android:background="@drawable/dotted"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout_login"
@@ -35,7 +35,7 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"/>
     <Button
-            android:text="Login"
+            android:text="@string/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_login"
@@ -46,7 +46,7 @@
             android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp"/>
     <Button
-            android:text="Cadastrar"
+            android:text="@string/cadastrar_nova"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/cadastrar_novo_button"
@@ -56,7 +56,7 @@
             android:layout_marginRight="8dp" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
-            android:text="Qual é a sua conta?"
+            android:text="@string/qual_a_sua_conta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
