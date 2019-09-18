@@ -21,9 +21,12 @@ import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.PerfilFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.ResiduosFragment
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +34,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+//        var mAuth = FirebaseAuth.getInstance()
+//
+//        var meuUsuario = mAuth.currentUser
+//        var meuEmail = meuUsuario?.email
+//
+//        //menu_id_apelido
+//        if (meuEmail != null){
+//            menu_id_email.text = meuEmail.toString()
+//        }
 
         NetWorkTask(this).execute()
 
