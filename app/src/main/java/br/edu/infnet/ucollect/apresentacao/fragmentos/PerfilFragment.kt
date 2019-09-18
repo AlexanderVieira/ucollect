@@ -55,5 +55,13 @@ class PerfilFragment : Fragment() {
         }
     }
 
+    companion object {
+        fun newInstance(): PerfilFragment{
+            val perfilFragment = PerfilFragment()
+
+            return perfilFragment
+        }
+    }
+
 
 }

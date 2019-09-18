@@ -19,7 +19,9 @@ import androidx.fragment.app.FragmentTransaction
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
+import br.edu.infnet.ucollect.apresentacao.fragmentos.PerfilFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.ResiduosFragment
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -102,19 +104,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_home -> {
+            R.id.nav_perfil -> {
+                iniciarPerfilFragment()
+            }
+            R.id.nav_empresas -> {
                 iniciarEmpresasFragment()
             }
-            R.id.nav_gallery -> {
+            R.id.nav_residuos -> {
                 iniciarResiduosFragment()
             }
 
+
             R.id.nav_logout -> {
                 logout()
-            }
-
-            R.id.nav_share -> {
-
             }
 
         }
@@ -123,16 +125,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
+    private fun iniciarPerfilFragment(){
+        val perfilFragment = PerfilFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.menu_content, perfilFragment).commit()
+    }
+
     private fun iniciarEmpresasFragment(){
         val empresasFragment = EmpresasFragment.newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.menu_content, empresasFragment).commit()
     }
 
     private fun iniciarResiduosFragment(){
-        val empresasFragment = ResiduosFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, empresasFragment).commit()
+        val residuoFragment = ResiduosFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.menu_content, residuoFragment).commit()
     }
-
 
     public fun detalhesEmpresa(dados: ArrayList<String>){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
