@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "617397759068-9uh61hl16v5d7mdg68s2m536j7kimnsk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.infnet.ucollect",
+            "certificate_hash": "40838a708589057a95ed9a4c6719724d8b08c139"
+          }
+        },
+        {
+          "client_id": "617397759068-8ua37lnas8j1a5q148m0c9j059tm3bv0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.infnet.ucollect",
+            "certificate_hash": "1b5898ce4e75220fea69387758977dab51cf155d"
+          }
+        },
+        {
           "client_id": "617397759068-5c9es5dlcs3unjd8jpi5nkgkn6da8o3d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

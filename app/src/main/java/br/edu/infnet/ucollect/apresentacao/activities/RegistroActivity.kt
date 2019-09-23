@@ -12,35 +12,43 @@ import br.edu.infnet.ucollect.dominio.modelos.Usuario
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registro.*
 
-const val TAG: String = "Create"
+const val TAG: String = "RegistroActivity"
 
 class RegistroActivity : AppCompatActivity() {
 
     lateinit var mAuth: FirebaseAuth
+    lateinit var database: FirebaseDatabase
+    lateinit var usuariosRef: DatabaseReference
+    lateinit var user: FirebaseUser
+    lateinit var email: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
         mAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        usuariosRef = database.getReference().child("usuarios")
         setListeners()
     }
 
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
         var currentUser = mAuth.currentUser
         updateUI(currentUser)
-    }
+    }*/
 
     fun setListeners(){
 
         btn_cadastrar_registro.setOnClickListener {
 
             var nome = edtxt_nome_registro.text.toString()
-            var email = intent.getStringExtra(EmailFormActivity.EXTRA_CAMPO_EMAIL)
+            email = intent.getStringExtra(EmailFormActivity.EXTRA_EMAIL_USUARIO)
             var senha = edtxt_senha_registro.text.toString()
             var confirmaSenha = edtxt_confirma_senha_registro.text.toString()
 
@@ -51,21 +59,20 @@ class RegistroActivity : AppCompatActivity() {
                                 if (task.isSuccessful) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success")
-                                    val user = mAuth.currentUser
-                                    updateUI(user)
+                                    user = mAuth.currentUser!!
 
                                     if (user != null){
-                                        Log.i(TAG, user.email.toString())
-                                        Log.i(TAG, user.displayName.toString())
-                                        Log.i(TAG, user.uid)
-                                        var myContato = Usuario(user.uid, nome,"alex.silva", user.email.toString(), senha, confirmaSenha)
-                                        var dataBaseRef = FirebaseDatabase.getInstance().getReference()
-                                        var contatoRef = dataBaseRef.child("usuarios")
-                                        contatoRef.child(user.uid).setValue(myContato)
-                                        var resultIntentLogin = Intent(baseContext, LoginActivity::class.java )
-                                        startActivity(resultIntentLogin)
-                                        finish()
+
+                                        var usuario = Usuario(
+                                            user.uid,
+                                            nome,
+                                            "fulano",
+                                            user.email.toString(),
+                                            senha, confirmaSenha
+                                        )
+                                        usuariosRef.child(user.uid).setValue(usuario)
                                     }
+                                    updateUI(user)
 
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -74,10 +81,8 @@ class RegistroActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT).show()
                                     updateUI(null)
                                 }
-
                                 // ...
                             }
-
                     }
             }
             else
@@ -87,13 +92,15 @@ class RegistroActivity : AppCompatActivity() {
         }
 
         btn_cancelar_registro.setOnClickListener {
-            finish()
+            mAuth.signOut()
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
             showSnackbar(btn_cadastrar_registro, "Olá " + currentUser.email!!)
+            startActivity(Intent(this, LoginActivity::class.java))
         }
         else{
             showSnackbar(btn_cadastrar_registro, "Olá, cadastre-se ou insira suas credenciais.")

@@ -28,11 +28,11 @@ class LoginActivity : AppCompatActivity() {
         setListeners()
     }
 
-    override fun onStart() {
+   /* override fun onStart() {
         super.onStart()
         var currentUser = mAuth.currentUser
         updateUI(currentUser)
-    }
+    }*/
 
     private fun setListeners(){
 
@@ -48,10 +48,6 @@ class LoginActivity : AppCompatActivity() {
                         Log.i(TAG, "signInWithEmail:success")
                         val user = mAuth.currentUser
                         updateUI(user)
-                        /*var resultIntent = Intent(baseContext, MainActivity::class.java )
-                        startActivity(resultIntent)*/
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
                     } else {
                         Log.i(TAG, "signInWithEmail:failure", task.exception)
                         //showToast(loginActivity, "Usuário e/ou senha inválidos!")
@@ -65,9 +61,13 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
             showSnackbar(btn_login, "Olá " + currentUser.email!!)
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
         else{
             showSnackbar(btn_login,"Olá, cadastre-se ou insira suas credenciais.")
+            /*startActivity(Intent(this, RegistroActivity::class.java))
+            finish()*/
         }
     }
 
