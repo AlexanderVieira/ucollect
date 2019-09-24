@@ -5,49 +5,51 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".apresentacao.activities.LoginExternoActivity" android:id="@+id/cl_root_login_externo">
+        tools:context=".apresentacao.activities.LoginExternoActivity"
+        android:id="@+id/cl_root_login_externo">
 
-    <TextView
+    <ImageView
             android:text="Logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/tv_logo_login_externo"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2" android:textStyle="bold"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginTop="24dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/btn_facebook_login_externo"/>
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/tv_logo_login_externo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/btn_facebook_login_externo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_facebook_login_externo" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_facebook_login_externo"
+            app:srcCompat="@drawable/recycle_png"/>
+
     <Button
             android:text="Entrar com Facebook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_facebook_login_externo" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.497"
-            android:layout_marginTop="180dp" app:layout_constraintTop_toBottomOf="@+id/tv_logo_login_externo"
-            app:layout_constraintBottom_toTopOf="@+id/btn_google_login_externo"
-            android:background="@drawable/btn_corner_round"/>
+            android:id="@+id/btn_facebook_login_externo"
+            app:backgroundTint="@color/verde_claro" android:insetLeft="8dp" android:insetRight="8dp"
+            app:layout_constraintStart_toStartOf="@+id/btn_google_login_externo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_google_login_externo" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_google_login_externo"/>
+
     <Button
             android:text="Entrar com Google"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_google_login_externo" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/btn_facebook_login_externo"
-            app:layout_constraintBottom_toTopOf="@+id/tv_email_login_externo"
-            app:layout_constraintVertical_bias="0.516" android:background="@drawable/btn_corner_round"/>
+            android:id="@+id/btn_google_login_externo"
+            app:backgroundTint="@color/verde_claro" android:insetLeft="8dp" android:insetRight="8dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_email_login_externo"
+            app:layout_constraintEnd_toEndOf="@+id/tv_email_login_externo" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_email_login_externo"/>
+
     <TextView
             android:text="Entrar com Email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_email_login_externo" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/tv_email_login_externo"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_google_login_externo"/>
+            android:layout_marginStart="8dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

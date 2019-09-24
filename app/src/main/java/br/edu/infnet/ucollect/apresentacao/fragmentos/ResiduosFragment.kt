@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.adapters.ResiduoAdapter
 import br.edu.infnet.ucollect.apresentacao.viewmodel.ResiduoViewModel
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_empresas.*
 import kotlinx.android.synthetic.main.fragment_residuos.*
 import kotlinx.android.synthetic.main.residuo_card.*
@@ -40,6 +41,7 @@ class ResiduosFragment : Fragment() {
                 .of(it)
                 .get(ResiduoViewModel::class.java)
         }
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_residuos, container, false)
     }

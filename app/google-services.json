@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "617397759068-d4k51ailkb5gu7qr6fnenes9lge234b8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.edu.infnet.ucollect",
-            "certificate_hash": "b91c59d4822331bfe3127c8e74fb2caeb980eaa3"
-          }
-        },
-        {
           "client_id": "617397759068-9uh61hl16v5d7mdg68s2m536j7kimnsk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

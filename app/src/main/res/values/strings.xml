@@ -16,5 +16,18 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="qual_a_sua_conta">Qual é a sua conta?</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="e_mail">E-mail</string>
+    <string name="junte_se_a_n_s">Junte-se a nós!</string>
+    <string name="continuar">Continuar</string>
+    <string name="tenho_uma_conta">Tenho uma conta</string>
+    <string name="digite_seu_nome_e_senha">Digite seu nome e senha</string>
+    <string name="nome_completo">Nome Completo</string>
+    <string name="cadastrar_nova">Cadastrar nova</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="campo_obridatorio">Campo Obrigatorio!</string>
 
 </resources>
