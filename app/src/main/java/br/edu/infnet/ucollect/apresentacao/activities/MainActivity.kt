@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
+import br.edu.infnet.ucollect.apresentacao.fragmentos.PerfilFragment
 import br.edu.infnet.ucollect.apresentacao.fragmentos.ResiduosFragment
 import com.google.firebase.auth.FirebaseAuth
 
@@ -103,24 +104,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when (item.itemId) {
             R.id.nav_home -> {
-                iniciarEmpresasFragment()
+                iniciarPerfilFragment()
             }
             R.id.nav_gallery -> {
+                iniciarEmpresasFragment()
+            }
+            R.id.nav_share -> {
                 iniciarResiduosFragment()
             }
 
             R.id.nav_logout -> {
                 logout()
             }
-
-            R.id.nav_share -> {
-
-            }
-
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun iniciarPerfilFragment(){
+        val perfilFragment = PerfilFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.menu_content, perfilFragment).commit()
     }
 
     private fun iniciarEmpresasFragment(){

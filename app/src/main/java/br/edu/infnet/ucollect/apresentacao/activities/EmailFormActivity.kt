@@ -75,9 +75,9 @@ class EmailFormActivity : AppCompatActivity() {
 
         }
 
-        btn_cancelar_email_form.setOnClickListener {
+        /*btn_cancelar_email_form.setOnClickListener {
             finish()
-        }
+        }*/
     }
 
     private fun updateUI(currentUser: Usuario?) {
