@@ -87,7 +87,7 @@ class LoginExternoActivity : AppCompatActivity() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
             showSnackbar(login_button, "Olá " + currentUser.email!!)
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
         else{
             showSnackbar(login_button,"Autenticação com o Facebook falhou!")
