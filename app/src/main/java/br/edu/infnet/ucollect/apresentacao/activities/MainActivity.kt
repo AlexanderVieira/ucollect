@@ -103,13 +103,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_home -> {
+            R.id.nav_perfil -> {
                 iniciarPerfilFragment()
             }
-            R.id.nav_gallery -> {
+            R.id.nav_empresas -> {
                 iniciarEmpresasFragment()
             }
-            R.id.nav_share -> {
+            R.id.nav_residuos -> {
                 iniciarResiduosFragment()
             }
 

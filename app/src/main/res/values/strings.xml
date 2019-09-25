@@ -30,4 +30,8 @@
     <string name="cancelar">Cancelar</string>
     <string name="campo_obridatorio">Campo Obrigatorio!</string>
 
+    <string name="facebook_app_id">788232871638616</string>
+    <string name="fb_login_protocol_scheme">fb788232871638616</string>
+
+
 </resources>
