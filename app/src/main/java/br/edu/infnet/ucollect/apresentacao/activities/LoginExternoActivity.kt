@@ -2,10 +2,10 @@ package br.edu.infnet.ucollect.apresentacao.activities
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import br.edu.infnet.ucollect.R
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -16,7 +16,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.activity_email_form.*
 import kotlinx.android.synthetic.main.activity_login_externo.*
 
 class LoginExternoActivity : AppCompatActivity() {
@@ -30,7 +29,7 @@ class LoginExternoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login_externo)
 
         callbackManager = CallbackManager.Factory.create()
-        login_button.setReadPermissions("email", "public_profile")
+        login_button.setPermissions("email", "public_profile")
 
         setListeners()
     }

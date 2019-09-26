@@ -71,7 +71,7 @@ dependencies {
     //implementation 'com.firebaseui:firebase-ui-storage:5.1.0'
 
     // Dependência para o autenticação com o facebook
-    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
