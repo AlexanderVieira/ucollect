@@ -12,6 +12,7 @@ import android.widget.Toast
 
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.activities.AdicionarObjetoActivity
+import br.edu.infnet.ucollect.apresentacao.activities.MinhasDoacoesActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_perfil.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -53,6 +54,15 @@ class PerfilFragment : Fragment() {
             }
 
         }
+        perfil_ver_items_button.setOnClickListener {
+
+            activity?.let {
+                var intent = Intent(it, MinhasDoacoesActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
     }
 
     companion object {

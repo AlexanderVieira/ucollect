@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.dominio.modelos.Residuo
-import kotlinx.android.synthetic.main.residuo_card.view.*
 
 class ResiduoAdapter (var residuos: List<Residuo> = mutableListOf()): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
@@ -45,10 +44,10 @@ class ResiduoAdapter (var residuos: List<Residuo> = mutableListOf()): RecyclerVi
 
     class ResiduoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val nome: TextView = itemView.findViewById(R.id.textView_card_residuo_nome)
-        val descricao: TextView = itemView.findViewById(R.id.textView_card_residuo_descricao)
+        val nome: TextView = itemView.findViewById(R.id.textView_card_doado_nome)
+        val descricao: TextView = itemView.findViewById(R.id.textView_card_doado_descricao)
         val doador: TextView = itemView.findViewById(R.id.textView_card_residuo_doador)
-        val imagem: ImageView = itemView.findViewById(R.id.imageView_card_residuo)
+        val imagem: ImageView = itemView.findViewById(R.id.imageView_card_doado)
     }
 }
 

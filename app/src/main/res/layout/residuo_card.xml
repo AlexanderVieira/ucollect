@@ -11,13 +11,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="wrap_content"
-                                                       android:id="@+id/layout_child_residuo_card_view_id"
+                                                       android:id="@+id/layout_child_doado_card_view_id"
                                                        android:background="@drawable/dotted">
 
         <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" app:srcCompat="@mipmap/ic_launcher_round"
-                android:id="@+id/imageView_card_residuo" android:layout_marginTop="8dp"
+                android:id="@+id/imageView_card_doado" android:layout_marginTop="8dp"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -26,25 +26,25 @@
                 android:text="Nome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_card_residuo_nome"
-                app:layout_constraintStart_toStartOf="@+id/imageView_card_residuo"
-                app:layout_constraintEnd_toEndOf="@+id/imageView_card_residuo"
+                android:id="@+id/textView_card_doado_nome"
+                app:layout_constraintStart_toStartOf="@+id/imageView_card_doado"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_card_doado"
                 android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
                 android:textSize="24sp" android:gravity="center"
                 android:textColor="#99151715" android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.514"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_card_residuo"
-                app:layout_constraintBottom_toTopOf="@+id/imageView_card_residuo"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_card_doado"
+                app:layout_constraintBottom_toTopOf="@+id/imageView_card_doado"
                 app:layout_constraintVertical_bias="0.0"/>
         <TextView
                 android:text="Descricao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_card_residuo_descricao"
+                android:id="@+id/textView_card_doado_descricao"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/textView_card_residuo_nome"
-                app:layout_constraintEnd_toEndOf="@+id/textView_card_residuo_nome"
-                app:layout_constraintTop_toBottomOf="@+id/textView_card_residuo_nome" android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textView_card_doado_nome"
+                app:layout_constraintEnd_toEndOf="@+id/textView_card_doado_nome"
+                app:layout_constraintTop_toBottomOf="@+id/textView_card_doado_nome" android:layout_marginTop="8dp"
                 app:layout_constraintHorizontal_bias="0.4" android:textColor="#99151715"/>
         <TextView
                 android:text="Doador"
@@ -54,7 +54,7 @@
                 android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView_card_residuo_descricao"
+                app:layout_constraintTop_toBottomOf="@+id/textView_card_doado_descricao"
                 android:textColor="#99151715"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
