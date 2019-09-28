@@ -56,6 +56,11 @@ class LoginActivity : AppCompatActivity() {
                 }
             //
         }
+
+        cadastrar_novo_button.setOnClickListener {
+            var intent = Intent(this, EmailFormActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {

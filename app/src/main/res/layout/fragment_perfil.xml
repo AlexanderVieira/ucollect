@@ -11,11 +11,13 @@
     <ImageView
             android:id="@+id/perfil_imagem_imageView"
             android:layout_width="120dp"
-            android:layout_height="120dp" android:layout_marginTop="32dp"
-            android:foreground="@drawable/circle_perfil" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            android:foreground="@drawable/circle_perfil"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait"/>
+            app:srcCompat="@drawable/com_facebook_profile_picture_blank_square" />
     <TextView
             android:text="Usuario"
             android:layout_width="wrap_content"

@@ -13,7 +13,11 @@
             android:theme="@style/AppTheme">
         <activity android:name=".apresentacao.activities.AdicionarObjetoActivity"></activity>
         <activity android:name=".apresentacao.activities.LoginActivity"></activity>
-        <activity android:name=".apresentacao.activities.EmailFormActivity"></activity>
+
+
+        <activity android:name=".apresentacao.activities.EmailFormActivity"
+            android:windowSoftInputMode="stateAlwaysVisible"
+        />
 
         <activity android:name=".apresentacao.activities.RegistroActivity"></activity>
         <activity android:name=".apresentacao.activities.LoginExternoActivity">

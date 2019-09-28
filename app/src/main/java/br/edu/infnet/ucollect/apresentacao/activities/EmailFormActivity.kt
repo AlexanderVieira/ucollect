@@ -27,6 +27,8 @@ class EmailFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_form)
 
+        btn_registrado_email_form.requestFocus()
+
         setListeners()
     }
 
@@ -69,10 +71,16 @@ class EmailFormActivity : AppCompatActivity() {
                 }
                 usuarioReference.addValueEventListener(usuarioListener)
 
-            }else{
+            } else {
                 Toast.makeText(this, "Email é Obrigatório!", Toast.LENGTH_LONG).show()
             }
 
+        }
+
+        btn_registrado_email_form.setOnClickListener {
+            var intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         /*btn_cancelar_email_form.setOnClickListener {
