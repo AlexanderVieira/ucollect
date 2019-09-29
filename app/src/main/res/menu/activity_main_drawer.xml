@@ -17,6 +17,11 @@
                 android:icon="@drawable/ic_memory_black_24dp"
                 android:title="Resíduos"/>
 
+        <item
+                android:id="@+id/nav_maps"
+                android:icon="@drawable/ic_memory_black_24dp"
+                android:title="Localização"/>
+
     </group>
 
     <item android:title="Outros">

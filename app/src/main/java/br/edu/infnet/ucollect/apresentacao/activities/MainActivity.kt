@@ -1,31 +1,35 @@
 package br.edu.infnet.ucollect.apresentacao.activities
 
-import android.app.Dialog
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.AsyncTask
+import android.content.pm.PackageManager
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.core.view.GravityCompat
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.view.Menu
-import android.view.View
-import androidx.fragment.app.FragmentTransaction
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import br.edu.infnet.ucollect.R
-import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
-import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
-import br.edu.infnet.ucollect.apresentacao.fragmentos.PerfilFragment
-import br.edu.infnet.ucollect.apresentacao.fragmentos.ResiduosFragment
+import br.edu.infnet.ucollect.apresentacao.fragmentos.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var mAuth: FirebaseAuth
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    val CODE_REQUEST = 51
+    val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         self = this
 
-        /*val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }*/
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -105,13 +105,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when (item.itemId) {
             R.id.nav_perfil -> {
-                iniciarPerfilFragment()
+                //iniciarPerfilFragment()
+                carregaFragment(PerfilFragment.newInstance())
             }
             R.id.nav_empresas -> {
-                iniciarEmpresasFragment()
+                //iniciarEmpresasFragment()
+                carregaFragment(EmpresasFragment.newInstance())
             }
             R.id.nav_residuos -> {
-                iniciarResiduosFragment()
+                //iniciarResiduosFragment()
+                carregaFragment(ResiduosFragment.newInstance())
+            }
+            R.id.nav_maps -> {
+                checkSelfPermission()
+                carregaFragment(MapFragment.newInstance())
             }
 
             R.id.nav_logout -> {
@@ -123,7 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun iniciarPerfilFragment(){
+    /*private fun iniciarPerfilFragment(){
         val perfilFragment = PerfilFragment.newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.menu_content, perfilFragment).commit()
     }
@@ -134,8 +141,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun iniciarResiduosFragment(){
-        val empresasFragment = ResiduosFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, empresasFragment).commit()
+        val residuosFragment = ResiduosFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.menu_content, residuosFragment).commit()
+    }
+
+    private fun iniciarMapsFragment(){
+        val mapsFragment = MapsFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.menu_content, mapsFragment).commit()
+    }*/
+
+    private fun carregaFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.menu_content, fragment).commit()
     }
 
 
@@ -157,11 +173,50 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         finish()
     }
 
+    private fun checkSelfPermission(){
+
+        if (checkSelfPermission(baseContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, ACCESS_FINE_LOCATION)){
+
+                Toast.makeText(this, "Aceita!", Toast.LENGTH_LONG).show()
+            }
+            ActivityCompat.requestPermissions(this, arrayOf(ACCESS_FINE_LOCATION), CODE_REQUEST)
+        }
+        else{
+
+            //show_permission.text = getString(R.string.possuiPermissao)
+            Log.i(TAG, "Possui permissão!")
+            getUserLocation()
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == CODE_REQUEST){
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                //show_permission.text = getString(R.string.permissaoConcedida)
+                Log.i(TAG, "Permissão concedida!")
+                getUserLocation()
+            }
+            else{
+                //show_permission.text = getString(R.string.permissaoNegada)
+                Log.i(TAG, "Permissão negada!")
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun getUserLocation(){
+        fusedLocationProviderClient.lastLocation.addOnSuccessListener {
+            //show_permission.text = "${it.latitude}; ${it.longitude}"
+            Log.i(TAG, "${it.latitude}; ${it.longitude}")
+        }
+    }
+
     companion object {
         lateinit var self: MainActivity
     }
-
-
 }
-
-
