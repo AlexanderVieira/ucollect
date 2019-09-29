@@ -18,7 +18,6 @@ class DetalhesEmpresaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detalhes_empresa, container, false)
     }
@@ -31,6 +30,8 @@ class DetalhesEmpresaFragment : Fragment() {
             textView2.text = dados?.get(0)
             textView3.text = dados?.get(1)
             textView4.text = dados?.get(2)
+            textView5.text = dados?.get(3)
+            textView7.text = dados?.get(4)
         }
         setListeners()
     }
@@ -38,11 +39,11 @@ class DetalhesEmpresaFragment : Fragment() {
     private fun setListeners(){
         btn_atualizar_empresa.setOnClickListener {
 
-            val args = Bundle()
-            args.putStringArrayList("dados", dados)
             var atualizarEmpresasFragment = AtualizarEmpresaFragment.newInstance()
-            atualizarEmpresasFragment.arguments = args
-
+            atualizarEmpresasFragment.arguments = Bundle().apply {
+                this.putStringArrayList("dados", dados)
+            }
+            //args.putStringArrayList("dados", dados)
             carregaFragment(atualizarEmpresasFragment)
         }
 
@@ -54,7 +55,11 @@ class DetalhesEmpresaFragment : Fragment() {
 
     private fun carregaFragment(fragment: Fragment){
         activity?.let {
-            it.supportFragmentManager.beginTransaction().replace(R.id.menu_content, fragment).commit()
+            it.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.menu_content, fragment)
+                .addToBackStack("anterior")
+                .commit()
         }
     }
 

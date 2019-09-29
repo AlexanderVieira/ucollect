@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.edu.infnet.ucollect.R
+import kotlinx.android.synthetic.main.fragment_atualizar_empresa.*
 
 class AtualizarEmpresaFragment : Fragment() {
 
@@ -16,6 +17,11 @@ class AtualizarEmpresaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val arguments = arguments
+        if (arguments != null) {
+            //textViewQuestion.text = arguments.getString(STATEMENT_KEY)
+            dados = arguments.getStringArrayList("dados")
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_atualizar_empresa, container, false)
     }
@@ -23,12 +29,13 @@ class AtualizarEmpresaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*arguments?.let{
-            dados = it.getStringArrayList("dados")
-            edtxt_nome_atualizar_empresa_frg.text = dados?.get(0) as Editable
-            edtxt_email_atualizar_empresa_frg.text = dados?.get(1) as Editable
-            edtxt_tel_atualizar_empresa_frg.text = dados?.get(2) as Editable
-        }*/
+        dados?.let {
+                edtxt_nome_atualizar_empresa_frg.setText(it.get(0))
+                edtxt_email_atualizar_empresa_frg.setText(it.get(1))
+                edtxt_tel_atualizar_empresa_frg.setText(it.get(2))
+                edtxt_cnpj_atualizar_empresa_frg.setText(it.get(3))
+                edtxt_end_atualizar_empresa_frg.setText(it.get(4))
+            }
     }
 
     companion object {
