@@ -20,6 +20,4 @@ class ResiduoViewModel: ViewModel(){
 
         return _residuos!!
     }
-
-
 }
