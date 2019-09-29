@@ -1,13 +1,12 @@
-package br.edu.infnet.ucollect.Util
+package br.edu.infnet.ucollect.utils
 
 import android.content.Context
 import android.location.Location
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
-class LocalizacaoUtil {
+class LocationProviderUtil {
 
     private var fusedLocationProviderClient: FusedLocationProviderClient?= null
     private var location : MutableLiveData<Location> = MutableLiveData()
@@ -17,15 +16,5 @@ class LocalizacaoUtil {
         if(fusedLocationProviderClient == null)
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(appContext)
         return fusedLocationProviderClient!!
-    }
-
-    fun getLocation() : LiveData<Location> {
-        fusedLocationProviderClient!!.lastLocation
-            .addOnSuccessListener {loc: Location? ->
-                location.value = loc
-
-            }
-
-        return location
     }
 }

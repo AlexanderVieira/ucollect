@@ -1,23 +1,17 @@
 package br.edu.infnet.ucollect.apresentacao.fragmentos
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.forEach
-import androidx.core.view.forEachIndexed
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.adapters.EmpresaAdapter
 import br.edu.infnet.ucollect.apresentacao.viewmodel.EmpresaViewModel
-import kotlinx.android.synthetic.main.empresa_card.*
-import kotlinx.android.synthetic.main.fragment_detalhes_empresa.*
 import kotlinx.android.synthetic.main.fragment_empresas.*
 
 class EmpresasFragment : Fragment() {
@@ -47,7 +41,6 @@ class EmpresasFragment : Fragment() {
         setUpRecyclerView()
         subscribe()
     }
-
 
     // Define a RecycleView
     private fun setUpRecyclerView(){

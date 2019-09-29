@@ -19,8 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.fragmentos.*
+import br.edu.infnet.ucollect.utils.LocationProviderUtil
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         self = this
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationProviderClient = LocationProviderUtil().getInstance(this)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -130,30 +131,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    /*private fun iniciarPerfilFragment(){
-        val perfilFragment = PerfilFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, perfilFragment).commit()
-    }
-
-    private fun iniciarEmpresasFragment(){
-        val empresasFragment = EmpresasFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, empresasFragment).commit()
-    }
-
-    private fun iniciarResiduosFragment(){
-        val residuosFragment = ResiduosFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, residuosFragment).commit()
-    }
-
-    private fun iniciarMapsFragment(){
-        val mapsFragment = MapsFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, mapsFragment).commit()
-    }*/
-
     private fun carregaFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.menu_content, fragment).commit()
     }
-
 
     public fun detalhesEmpresa(dados: ArrayList<String>){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -212,7 +192,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun getUserLocation(){
         fusedLocationProviderClient.lastLocation.addOnSuccessListener {
             //show_permission.text = "${it.latitude}; ${it.longitude}"
-            Log.i(TAG, "${it.latitude}; ${it.longitude}")
+            Log.i(TAG, "Success Listener: ${it.latitude}; ${it.longitude}")
         }
     }
 

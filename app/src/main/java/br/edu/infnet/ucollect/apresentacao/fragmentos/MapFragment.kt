@@ -19,24 +19,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-
-
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener {
-    override fun onMapClick(latLng: LatLng?) {
-        Toast.makeText(getApplicationContext(),"${latLng!!.latitude}; ${latLng.longitude}", Toast.LENGTH_LONG ).show()
-    }
 
     val TAG = "MapFragment"
     val NIVEL_ZOOM = 12.0f
     private lateinit var mapFragment: SupportMapFragment
     private lateinit var mMap: GoogleMap
     private lateinit var locationManager: LocationManager
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -88,6 +77,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         var extraLojaReciclagem = LatLng(-22.8334213, -43.2855184)
         mMap.addMarker(MarkerOptions().position(extraLojaReciclagem).title("Extra - Loja com Estação de Reciclagem").snippet("Rua Suruí, 1109, Galpão 01, Brás de Pina"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(extraLojaReciclagem, NIVEL_ZOOM))
+    }
+
+    override fun onMapClick(latLng: LatLng?) {
+        Toast.makeText(getApplicationContext(),"${latLng!!.latitude}; ${latLng.longitude}", Toast.LENGTH_LONG ).show()
     }
 
     companion object {

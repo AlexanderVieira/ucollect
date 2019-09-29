@@ -5,16 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.activities.MainActivity
-import br.edu.infnet.ucollect.apresentacao.fragmentos.DetalhesEmpresaFragment
-import br.edu.infnet.ucollect.apresentacao.fragmentos.EmpresasFragment
 import br.edu.infnet.ucollect.dominio.modelos.Empresa
-import kotlinx.android.synthetic.main.empresa_card.*
 import kotlinx.android.synthetic.main.empresa_card.view.*
 
 class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
