@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.empresa_card.view.*
 
 class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView = LayoutInflater
             .from(parent.context)
@@ -29,7 +28,6 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
                 )
             MainActivity.self.detalhesEmpresa(dadosEmpresa)
         }
-
         return EmpresaViewHolder(itemView)
     }
 
@@ -45,8 +43,8 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
         val empresa = empresas[position]
 
         if (holder is EmpresaViewHolder){
-            holder.nome.text = empresa.nome
-            holder.cnpj.text = empresa.cnpj.toString()
+            holder.nome.text = empresa.razaoSocial
+            holder.cnpj.text = empresa.cnpj
             holder.endereco.text = empresa.endereco
             holder.telefone.text = empresa.telefone
             holder.email.text = empresa.email
@@ -55,7 +53,6 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
     }
 
     class EmpresaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
 
         val nome: TextView = itemView.findViewById(R.id.textView_card_nome)
         val cnpj: TextView = itemView.findViewById(R.id.textView_card_cnpj)

@@ -1,15 +1,14 @@
 package br.edu.infnet.ucollect.infraestrutura.repositorios
 
-import android.util.Log
-import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.dominio.modelos.Residuo
-import com.google.firebase.database.*
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 
 class ResiduoRepository {
 
-
     private lateinit var residuos: List<Residuo>
-
 
     /*  listOf<Residuo>(
         Residuo("1", "Bateria", "XPTO1", "1", R.drawable.ic_battery_20_black_24dp),
@@ -22,7 +21,6 @@ class ResiduoRepository {
     fun getResiduos() : List<Residuo>{
 
         var bancoDados = FirebaseDatabase.getInstance().getReference()
-
         var bancoDadosRef = bancoDados.child("Residuos")
 
         residuos = mutableListOf()

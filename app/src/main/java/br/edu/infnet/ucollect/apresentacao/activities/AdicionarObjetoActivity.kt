@@ -1,13 +1,11 @@
 package br.edu.infnet.ucollect.apresentacao.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.dominio.modelos.Residuo
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthProvider
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_adicionar_objeto.*
@@ -15,9 +13,7 @@ import kotlinx.android.synthetic.main.activity_adicionar_objeto.*
 class AdicionarObjetoActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
-
     private lateinit var currentUser: FirebaseUser
-
     private lateinit var bancoDados: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +21,7 @@ class AdicionarObjetoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_adicionar_objeto)
 
         mAuth = FirebaseAuth.getInstance()
-
         bancoDados = FirebaseDatabase.getInstance()
-
         setUpListeners()
     }
 
@@ -37,7 +31,6 @@ class AdicionarObjetoActivity : AppCompatActivity() {
             currentUser = it
         }
     }
-
 
     private fun setUpListeners(){
 

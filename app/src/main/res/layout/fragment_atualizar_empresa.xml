@@ -1,0 +1,117 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:id="@+id/atualiza_empresa_card"
+                                   tools:context=".apresentacao.fragmentos.AtualizarEmpresaFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_child_empresa_detalhes_card_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <Button
+                android:id="@+id/btn_excluir_empresa2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" android:text="Excluir"
+                app:cornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
+        <EditText
+                android:id="@+id/edtxt_nome_atualizar_empresa_frg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp" android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Empresa"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/verdeTexto"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/edtxt_email_atualizar_empresa_frg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imv_atualizar_empresa_frg"/>
+        <EditText
+                android:id="@+id/edtxt_email_atualizar_empresa_frg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp" android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/edtxt_tel_atualizar_empresa_frg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_nome_atualizar_empresa_frg"/>
+        <EditText
+                android:id="@+id/edtxt_tel_atualizar_empresa_frg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp" android:hint="Telefone"
+                android:inputType="phone"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/edtxt_cnpj_atualizar_empresa_frg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.48"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_email_atualizar_empresa_frg"/>
+        <EditText
+                android:id="@+id/edtxt_cnpj_atualizar_empresa_frg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" android:ems="10"
+                android:hint="CNPJ" android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_tel_atualizar_empresa_frg"/>
+        <ImageView
+                android:id="@+id/imv_atualizar_empresa_frg"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="8dp" android:layout_marginLeft="8dp" android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                android:foreground="@drawable/circle" android:src="@mipmap/ic_launcher"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+        />
+        <EditText
+                android:id="@+id/edtxt_end_atualizar_empresa_frg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" android:ems="10"
+                android:hint="Endereço" android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_cnpj_atualizar_empresa_frg"/>
+        <Button
+                android:id="@+id/btn_atualizar_empresa_frg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Atualizar" app:backgroundTint="@color/verde_claro"
+                app:cornerRadius="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_excluir_empresa2"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
+        <Button
+                android:id="@+id/btn_salvar_empresa_frg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Salvar" app:backgroundTint="@color/verde_claro"
+                app:cornerRadius="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
