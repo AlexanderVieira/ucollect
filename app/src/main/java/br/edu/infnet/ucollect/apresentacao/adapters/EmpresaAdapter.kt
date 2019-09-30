@@ -28,6 +28,7 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
                 itemView.textView_card_endereco.text.toString()
                 //itemView.imageView_card_empresa.getTag().toString()
                 )
+
             MainActivity.self.detalhesEmpresa(dadosEmpresa)
         }
         return EmpresaViewHolder(itemView)

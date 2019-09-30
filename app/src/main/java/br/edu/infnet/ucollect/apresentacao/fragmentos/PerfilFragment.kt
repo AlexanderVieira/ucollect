@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.activities.AdicionarObjetoActivity
 import br.edu.infnet.ucollect.apresentacao.activities.MinhasDoacoesActivity
 //import br.edu.infnet.ucollect.apresentacao.activities.MinhasDoacoesActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_perfil.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
@@ -22,6 +24,8 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 class PerfilFragment : Fragment() {
 
     var mAuth = FirebaseAuth.getInstance()
+    private lateinit var bancoDadosRef: DatabaseReference
+    lateinit var myListener: ValueEventListener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_perfil, container, false)
@@ -31,45 +35,60 @@ class PerfilFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         setUpListeners()
 
         var currentUser = mAuth.currentUser
+        bancoDadosRef = FirebaseDatabase.getInstance().reference.child("usuarios-residuos").child(currentUser!!.uid)
 
         activity?.let {
             if (currentUser != null) {
                 var email = currentUser.email
-                //Toast.makeText(it, email, Toast.LENGTH_LONG).show()
                 perfil_nome_textView.setText(email)
-
             }
         }
+
     }
+
+    override fun onStart() {
+        super.onStart()
+        val listener = object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                // nada
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()){
+                    var contador = dataSnapshot.childrenCount
+                    perfil_itens_doados_textView.text = contador.toString()
+                }
+            }
+        }
+
+        myListener = bancoDadosRef.addValueEventListener(listener)
+
+    }
+
 
     private fun setUpListeners(){
         perfil_adicionar_button.setOnClickListener {
-
             activity?.let {
-
                 var intent = Intent(it, AdicionarObjetoActivity::class.java)
                 startActivity(intent)
             }
-
         }
-        perfil_ver_items_button.setOnClickListener {
 
+        perfil_ver_items_button.setOnClickListener {
             activity?.let {
                 var intent = Intent(it, MinhasDoacoesActivity::class.java)
                 startActivity(intent)
             }
-
         }
-
     }
 
     companion object {
         fun newInstance(): PerfilFragment{
             val perfilFragment = PerfilFragment()
-
             return perfilFragment
         }
     }
