@@ -3,6 +3,7 @@ package br.edu.infnet.ucollect.apresentacao.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.dominio.modelos.Residuo
 import com.google.firebase.auth.FirebaseAuth
@@ -31,23 +32,44 @@ class ResiduoDetalhesActivity : AppCompatActivity() {
 
         residuo = intent.getSerializableExtra("residuo") as Residuo
 
+        setUpListener()
+
         layout_child_doado_card_view_id.imageView_card_doado.setImageResource(R.drawable.ic_battery_20_black_24dp)
         textView_card_doado_nome.text = residuo!!.nome
         textView_card_doado_descricao.text = residuo!!.descricao
         textView_card_residuo_doador.text = intent.getStringExtra("apelidoDoador")
 
-        if(intent.getBooleanExtra("meusResiduos", false) || residuo.doadorId == currentUser.uid){
+       if(residuo.doadorId == currentUser.uid){
+           imagem_button_reserva_card.isClickable = false
+           if(residuo.reservado){
+               imagem_button_reserva_card.visibility = View.VISIBLE
+               text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
+           }
+        } else {
+           if (!residuo.reservado) {
+               imagem_button_reserva_card.setImageResource(R.drawable.ic_add_shopping_cart_black_24dp)
+               text_card_detalhes_residuos_reversar.text = "Reservar"
+               imagem_button_reserva_card.visibility = View.VISIBLE
+               text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
+               imagem_button_reserva_card.isClickable = true
+           } else{
+               imagem_button_reserva_card.isClickable = false
+               imagem_button_reserva_card.visibility = View.VISIBLE
+               text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
+           }
+      }
+   }
 
-        }else if (!residuo.reservado){
-            imagem_button_reserva_card.visibility = View.VISIBLE
-        }
-
-        setUpListener()
-    }
 
     fun setUpListener(){
         imagem_button_reserva_card.setOnClickListener {
+
             bancoDadosRef.child("residuos")
+                .child(residuo.residuoId)
+                .child("reservado").setValue(true)
+
+            bancoDadosRef.child("usuarios-residuos")
+                .child(residuo.doadorId)
                 .child(residuo.residuoId)
                 .child("reservado").setValue(true)
 

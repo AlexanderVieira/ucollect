@@ -34,12 +34,11 @@ class PerfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         setUpListeners()
 
         var currentUser = mAuth.currentUser
-        bancoDadosRef = FirebaseDatabase.getInstance().reference.child("usuarios-residuos").child(currentUser!!.uid)
+
+        //bancoDadosRef = FirebaseDatabase.getInstance().reference.child("usuarios-residuos").child(currentUser!!.uid)
 
         activity?.let {
             if (currentUser != null) {
@@ -52,7 +51,7 @@ class PerfilFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val listener = object : ValueEventListener {
+      /*  val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 // nada
             }
@@ -65,7 +64,7 @@ class PerfilFragment : Fragment() {
             }
         }
 
-        myListener = bancoDadosRef.addValueEventListener(listener)
+       // myListener = bancoDadosRef.addValueEventListener(listener)*/
 
     }
 
