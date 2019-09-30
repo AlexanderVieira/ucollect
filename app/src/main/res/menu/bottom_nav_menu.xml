@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_list"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="Listagem"/>
+
+    <item
+            android:id="@+id/navigation_save"
+            android:icon="@drawable/ic_save_black_24dp"
+            android:title="Salvar"/>
+
+    <item
+            android:id="@+id/navigation_update"
+            android:icon="@drawable/ic_edit_black_24dp"
+            android:title="Atualizar"/>
+
+    <item
+            android:id="@+id/navigation_delete"
+            android:icon="@drawable/ic_delete_black_24dp"
+            android:title="Excluir"/>
+
+    <item
+            android:id="@+id/navigation_localization"
+            android:icon="@drawable/ic_location_on_black_24dp"
+            android:title="Localização"/>
+
+</menu>

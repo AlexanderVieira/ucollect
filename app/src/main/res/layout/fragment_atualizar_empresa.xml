@@ -10,7 +10,7 @@
             android:layout_height="match_parent">
 
         <Button
-                android:id="@+id/btn_excluir_empresa2"
+                android:id="@+id/btn_excluir_empresa_frg"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,21 +97,24 @@
                 android:id="@+id/btn_atualizar_empresa_frg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Atualizar" app:backgroundTint="@color/verde_claro"
+                android:layout_marginEnd="8dp"
+                android:text="Atualizar"
+                app:backgroundTint="@color/verde_claro"
                 app:cornerRadius="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/btn_excluir_empresa2"
-                app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
+                app:layout_constraintEnd_toStartOf="@+id/btn_excluir_empresa_frg"
+                app:layout_constraintStart_toEndOf="@+id/btn_salvar_empresa_frg" app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
         <Button
                 android:id="@+id/btn_salvar_empresa_frg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Salvar" app:backgroundTint="@color/verde_claro"
+                android:layout_marginEnd="8dp" android:text="Salvar"
+                app:backgroundTint="@color/verde_claro"
                 app:cornerRadius="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
+                app:layout_constraintEnd_toStartOf="@+id/btn_atualizar_empresa_frg"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/edtxt_end_atualizar_empresa_frg"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -4,32 +4,33 @@ import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.fragmentos.*
 import br.edu.infnet.ucollect.utils.LocationProviderUtil
-
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var mAuth: FirebaseAuth
-    /*lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     val CODE_REQUEST = 51
-    val TAG = "MainActivity"*/
+    val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         self = this
 
         //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        //fusedLocationProviderClient = LocationProviderUtil().getInstance(this)
+        fusedLocationProviderClient = LocationProviderUtil().getInstance(this)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
@@ -119,7 +121,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 carregaFragment(ResiduosFragment.newInstance())
             }
             R.id.nav_maps -> {
-               // checkSelfPermission()
+                checkPermission()
                 carregaFragment(MapFragment.newInstance())
             }
 
@@ -133,7 +135,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun carregaFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.menu_content, fragment).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.menu_content, fragment)
+            .addToBackStack("anterior")
+            .commit()
     }
 
     public fun detalhesEmpresa(dados: ArrayList<String>){
@@ -154,9 +160,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         finish()
     }
 
-  /*  private fun checkSelfPermission(){
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkPermission(){
 
-        if (checkSelfPermission(baseContext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+        if (checkSelfPermission(ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, ACCESS_FINE_LOCATION)){
 
@@ -171,9 +178,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             getUserLocation()
         }
 
-    }*/
+    }
 
- /*   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == CODE_REQUEST){
@@ -195,7 +202,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //show_permission.text = "${it.latitude}; ${it.longitude}"
             Log.i(TAG, "Success Listener: ${it.latitude}; ${it.longitude}")
         }
-    }*/
+    }
 
     companion object {
         lateinit var self: MainActivity

@@ -27,13 +27,16 @@ class EmpresasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        var rootView =  inflater.inflate(R.layout.fragment_empresas, container, false)
+
         // Inicia o ViewModel
         activity?.let {
             empresaViewModel = ViewModelProviders
                 .of(it)
                 .get(EmpresaViewModel::class.java)
         }
-        return inflater.inflate(R.layout.fragment_empresas, container, false)
+
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

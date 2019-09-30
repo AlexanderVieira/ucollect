@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.fragment_atualizar_empresa.*
 class AtualizarEmpresaFragment : Fragment() {
 
     private var dados : ArrayList<String>? = null
+    private var isToUpdate : Char? = null
+    private var isToDelete : Char? = null
+    //private var isToSave : Char? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +24,10 @@ class AtualizarEmpresaFragment : Fragment() {
         if (arguments != null) {
             //textViewQuestion.text = arguments.getString(STATEMENT_KEY)
             dados = arguments.getStringArrayList("dados")
+            isToUpdate = arguments.getChar("atualizar")
+            isToDelete = arguments.getChar("excluir")
+            //isToSave = arguments.getChar("salvar")
+
         }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_atualizar_empresa, container, false)
@@ -36,6 +43,17 @@ class AtualizarEmpresaFragment : Fragment() {
                 edtxt_cnpj_atualizar_empresa_frg.setText(it.get(3))
                 edtxt_end_atualizar_empresa_frg.setText(it.get(4))
             }
+
+        if (isToUpdate == 'A'){
+            btn_salvar_empresa_frg.visibility = View.GONE
+            btn_excluir_empresa_frg.visibility = View.GONE
+        }else if (isToDelete == 'D'){
+            btn_salvar_empresa_frg.visibility = View.GONE
+            btn_atualizar_empresa_frg.visibility = View.GONE
+        }else{
+            btn_atualizar_empresa_frg.visibility = View.GONE
+            btn_excluir_empresa_frg.visibility = View.GONE
+        }
     }
 
     companion object {

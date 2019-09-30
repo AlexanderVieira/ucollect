@@ -5,6 +5,8 @@ import br.edu.infnet.ucollect.dominio.modelos.Empresa
 
 class EmpresaRepository {
 
+    //private lateinit var empresas: MutableList<Empresa>
+
     private val empresas = listOf<Empresa>(
         Empresa("1", "Associação Renovar", "86610819000196", "Rua A, 120", "21997258712", "teste1@teste.com.br", R.mipmap.ic_launcher_round),
         Empresa("2", "Coop Quitungo", "76433526000127", "Rua B, 121", "21997258713", "teste2@teste.com.br", R.mipmap.ic_launcher_round),
@@ -14,4 +16,36 @@ class EmpresaRepository {
     )
 
     fun getEmpresas() = empresas
+
+    /*fun getEmpresas() : List<Empresa>{
+
+        var bancoDados = FirebaseDatabase.getInstance().getReference()
+        var bancoDadosRef = bancoDados.child("Empresas")
+
+        empresas = mutableListOf()
+
+        bancoDadosRef.addChildEventListener(object: ChildEventListener {
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                empresas.plus(p0.getValue(Empresa::class.java))
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
+
+        return empresas
+    }*/
 }

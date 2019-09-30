@@ -18,7 +18,6 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
             .from(parent.context)
             .inflate(R.layout.empresa_card, parent, false)
 
-
         itemView.setOnClickListener {
 
             val dadosEmpresa = arrayListOf(
@@ -50,7 +49,7 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
             holder.endereco.text = empresa.endereco
             holder.telefone.text = empresa.telefone
             holder.email.text = empresa.email
-            holder.imagem.setImageResource(empresa.imagem)
+            holder.imagem.setImageResource(empresa.imagemEmpresa)
         }
     }
 
