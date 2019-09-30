@@ -26,7 +26,7 @@ class AtualizarEmpresaFragment : Fragment() {
     ): View? {
         val arguments = arguments
         if (arguments != null) {
-            //textViewQuestion.text = arguments.getString(STATEMENT_KEY)
+
             dados = arguments.getStringArrayList("dados")
             isToUpdate = arguments.getChar("atualizar")
             isToDelete = arguments.getChar("excluir")
