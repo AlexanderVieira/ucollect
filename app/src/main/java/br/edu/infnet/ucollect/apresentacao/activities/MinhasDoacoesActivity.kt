@@ -47,6 +47,7 @@ class MinhasDoacoesActivity : AppCompatActivity() {
                 override fun onDataChange(p0: DataSnapshot) {
                     val usuario = p0.getValue(Usuario::class.java)
                     if(usuario == null){
+                        setUpRecyclerView()
                         return
                     }
                     usuarios.add(usuario)

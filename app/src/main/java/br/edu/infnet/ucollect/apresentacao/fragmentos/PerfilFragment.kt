@@ -54,6 +54,8 @@ class PerfilFragment : Fragment() {
                 if (dataSnapshot.exists()){
                     var contador = dataSnapshot.childrenCount
                     perfil_itens_doados_textView.text = contador.toString()
+                } else {
+                    perfil_itens_doados_textView.text = "0"
                 }
             }
         }
