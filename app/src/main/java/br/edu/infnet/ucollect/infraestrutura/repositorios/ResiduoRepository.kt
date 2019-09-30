@@ -1,14 +1,12 @@
 package br.edu.infnet.ucollect.infraestrutura.repositorios
 
+import br.edu.infnet.ucollect.apresentacao.adapters.ResiduoAdapter
 import br.edu.infnet.ucollect.dominio.modelos.Residuo
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class ResiduoRepository {
 
-    private lateinit var residuos: List<Residuo>
+    private lateinit var residuos: MutableList<Residuo>
 
     /*  listOf<Residuo>(
         Residuo("1", "Bateria", "XPTO1", "1", R.drawable.ic_battery_20_black_24dp),
@@ -46,6 +44,18 @@ class ResiduoRepository {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
+
+       /* bancoDadosRef.addValueEventListener(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                residuos.plus(p0.getValue(Residuo::class.java))
+            }
+
+        })*/
+
 
         return residuos
     }
