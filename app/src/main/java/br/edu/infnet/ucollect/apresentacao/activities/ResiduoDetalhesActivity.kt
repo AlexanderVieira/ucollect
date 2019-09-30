@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.residuo_card.view.*
 
 class ResiduoDetalhesActivity : AppCompatActivity() {
 
+
+    val reservar: String = "Reservar"
+    val reservado: String = "Reservado"
     private lateinit var bancoDadosRef: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
@@ -39,29 +42,31 @@ class ResiduoDetalhesActivity : AppCompatActivity() {
         textView_card_doado_descricao.text = residuo!!.descricao
         textView_card_residuo_doador.text = intent.getStringExtra("apelidoDoador")
 
-       if(residuo.doadorId == currentUser.uid){
-           imagem_button_reserva_card.isClickable = false
-           if(residuo.reservado){
-               imagem_button_reserva_card.visibility = View.VISIBLE
-               text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
-           }
+        if (residuo.doadorId == currentUser.uid) {
+            imagem_button_reserva_card.isClickable = false
+            if (residuo.reservado) {
+                imagem_button_reserva_card.visibility = View.VISIBLE
+                text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
+            }
+
         } else {
-           if (!residuo.reservado) {
-               imagem_button_reserva_card.setImageResource(R.drawable.ic_add_shopping_cart_black_24dp)
-               text_card_detalhes_residuos_reversar.text = "Reservar"
-               imagem_button_reserva_card.visibility = View.VISIBLE
-               text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
-               imagem_button_reserva_card.isClickable = true
-           } else{
-               imagem_button_reserva_card.isClickable = false
-               imagem_button_reserva_card.visibility = View.VISIBLE
-               text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
-           }
-      }
-   }
+            if (!residuo.reservado) {
+                imagem_button_reserva_card.setImageResource(R.drawable.ic_add_shopping_cart_black_24dp)
 
+                text_card_detalhes_residuos_reversar.text = reservar
+                imagem_button_reserva_card.visibility = View.VISIBLE
+                text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
+                imagem_button_reserva_card.isClickable = true
+            } else {
+                imagem_button_reserva_card.isClickable = false
+                text_card_detalhes_residuos_reversar.text = reservado
+                imagem_button_reserva_card.visibility = View.VISIBLE
+                text_card_detalhes_residuos_reversar.visibility = View.VISIBLE
+            }
+        }
+    }
 
-    fun setUpListener(){
+    fun setUpListener() {
         imagem_button_reserva_card.setOnClickListener {
 
             bancoDadosRef.child("residuos")
@@ -75,9 +80,16 @@ class ResiduoDetalhesActivity : AppCompatActivity() {
 
             var chave = bancoDadosRef.child("residuos-reservados").push().key
 
-            bancoDadosRef.child("residuos-reservados").child(chave.toString()).setValue(mapOf(Pair("residuoID",residuo.residuoId),
-                                                                                                        Pair("coletorId", currentUser.uid)))
+            bancoDadosRef.child("residuos-reservados").child(chave.toString()).setValue(
+                mapOf(
+                    Pair("residuoID", residuo.residuoId),
+                    Pair("coletorId", currentUser.uid)
+                )
+            )
 
+            imagem_button_reserva_card.setImageResource(R.drawable.ic_remove_shopping_cart_black_24dp)
+            text_card_detalhes_residuos_reversar.text = reservado
+            imagem_button_reserva_card.isClickable = false
         }
     }
 

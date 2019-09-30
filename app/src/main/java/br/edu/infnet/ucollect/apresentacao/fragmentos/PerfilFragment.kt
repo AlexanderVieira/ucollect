@@ -7,18 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.activities.AdicionarObjetoActivity
 import br.edu.infnet.ucollect.apresentacao.activities.MinhasDoacoesActivity
-//import br.edu.infnet.ucollect.apresentacao.activities.MinhasDoacoesActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_perfil.*
-import kotlinx.android.synthetic.main.nav_header_main.*
 
 
 class PerfilFragment : Fragment() {
@@ -38,7 +32,7 @@ class PerfilFragment : Fragment() {
 
         var currentUser = mAuth.currentUser
 
-        //bancoDadosRef = FirebaseDatabase.getInstance().reference.child("usuarios-residuos").child(currentUser!!.uid)
+        bancoDadosRef = FirebaseDatabase.getInstance().reference.child("usuarios-residuos").child(currentUser!!.uid)
 
         activity?.let {
             if (currentUser != null) {
@@ -51,7 +45,7 @@ class PerfilFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-      /*  val listener = object : ValueEventListener {
+        val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 // nada
             }
@@ -64,8 +58,7 @@ class PerfilFragment : Fragment() {
             }
         }
 
-       // myListener = bancoDadosRef.addValueEventListener(listener)*/
-
+        myListener = bancoDadosRef.addValueEventListener(listener)
     }
 
 
@@ -91,6 +84,4 @@ class PerfilFragment : Fragment() {
             return perfilFragment
         }
     }
-
-
 }
