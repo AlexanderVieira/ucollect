@@ -10,7 +10,7 @@ import br.edu.infnet.ucollect.dominio.modelos.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_minhas_doacoes.*
+import kotlinx.android.synthetic.main.fragment_residuos.*
 
 class MinhasDoacoesActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class MinhasDoacoesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_minhas_doacoes)
+        setContentView(R.layout.fragment_residuos)
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -31,8 +31,7 @@ class MinhasDoacoesActivity : AppCompatActivity() {
             currentUser = it
         }
 
-        bancoDadosRef = FirebaseDatabase.getInstance().reference
-            .child("usuarios-residuos").child(currentUser.uid)
+        bancoDadosRef = FirebaseDatabase.getInstance().reference.child("usuarios-residuos").child(currentUser.uid)
 
     }
 
@@ -42,7 +41,7 @@ class MinhasDoacoesActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance().reference.child("usuarios").child(currentUser.uid)
             .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    // nada
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {
@@ -58,11 +57,9 @@ class MinhasDoacoesActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
-
-            recycler_view_card_meus_residuos.adapter = adapter
-            recycler_view_card_meus_residuos.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            if(recycler_view_card_meus_residuos == null)
-            {
+        recycler_view_card_residuos.adapter = adapter
+        recycler_view_card_residuos.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            if (recycler_view_card_residuos == null) {
                 Toast.makeText(this, "Nenhum produto ofertado.", Toast.LENGTH_SHORT).show()
             }
     }
