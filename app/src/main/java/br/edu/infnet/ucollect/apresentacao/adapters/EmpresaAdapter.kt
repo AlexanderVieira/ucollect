@@ -26,6 +26,7 @@ class EmpresaAdapter(var empresas: List<Empresa> = mutableListOf()): RecyclerVie
                 itemView.textView_card_email.text.toString(),
                 itemView.textView_card_telefone.text.toString()
                 )
+
             MainActivity.self.detalhesEmpresa(dadosEmpresa)
         }
         return EmpresaViewHolder(itemView)

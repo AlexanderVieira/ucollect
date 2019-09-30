@@ -9,9 +9,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.adapters.ResiduoAdapter
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_minhas_doacoes.*
+import br.edu.infnet.ucollect.dominio.modelos.Usuario
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_residuos.*
 
 
@@ -20,6 +19,8 @@ class ResiduosFragment : Fragment() {
     private lateinit var bancoDadosRef: DatabaseReference
 
     private var adapter: ResiduoAdapter? = null
+
+    private lateinit var usuarios: ArrayList<Usuario>
 
 
     override fun onCreateView(
@@ -30,8 +31,29 @@ class ResiduosFragment : Fragment() {
         bancoDadosRef = FirebaseDatabase.getInstance().reference
             .child("residuos")
 
-        adapter = ResiduoAdapter(bancoDadosRef,context!!)
+        usuarios = ArrayList()
 
+        FirebaseDatabase.getInstance().reference.child("usuarios").addChildEventListener(object: ChildEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+
+            }
+
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                usuarios.add(p0.getValue(Usuario::class.java)!!)
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+
+            }
+        })
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_residuos, container, false)
     }
@@ -39,7 +61,10 @@ class ResiduosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpRecyclerView()
+        activity?.let{
+            adapter = ResiduoAdapter(bancoDadosRef,it, usuarios)
+            setUpRecyclerView()
+        }
         //subscribe()
     }
 

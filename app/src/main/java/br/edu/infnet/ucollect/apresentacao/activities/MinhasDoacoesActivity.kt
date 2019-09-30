@@ -17,6 +17,7 @@ class MinhasDoacoesActivity : AppCompatActivity() {
     private lateinit var bancoDadosRef: DatabaseReference
     private lateinit var currentUser: FirebaseUser
     private lateinit var mAuth: FirebaseAuth
+    private val usuarios = ArrayList<Usuario>()
 
     private var adapter: ResiduoAdapter? = null
 
@@ -49,7 +50,8 @@ class MinhasDoacoesActivity : AppCompatActivity() {
                     if(usuario == null){
                         return
                     }
-                    adapter = ResiduoAdapter(bancoDadosRef,this@MinhasDoacoesActivity)
+                    usuarios.add(usuario)
+                    adapter = ResiduoAdapter(bancoDadosRef,this@MinhasDoacoesActivity,usuarios,true)
                     setUpRecyclerView()
                 }
             })

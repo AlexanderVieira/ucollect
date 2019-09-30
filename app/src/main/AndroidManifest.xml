@@ -17,9 +17,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".apresentacao.activities.MinhasDoacoesActivity">
+        <activity android:name=".apresentacao.activities.ResiduoDetalhesActivity">
         </activity>
-        <!-- <activity android:name=".apresentacao.activities.MinhasDoacoesActivity"></activity> -->
+        <activity android:name=".apresentacao.activities.MinhasDoacoesActivity">
+        </activity> <!-- <activity android:name=".apresentacao.activities.MinhasDoacoesActivity"></activity> -->
         <activity android:name=".apresentacao.activities.AdicionarObjetoActivity"/>
         <activity android:name=".apresentacao.activities.LoginActivity"/>
         <activity android:name=".apresentacao.activities.EmailFormActivity"/>
