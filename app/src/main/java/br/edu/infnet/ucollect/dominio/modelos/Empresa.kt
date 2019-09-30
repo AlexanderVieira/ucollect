@@ -2,13 +2,13 @@ package br.edu.infnet.ucollect.dominio.modelos
 
 import com.google.firebase.database.Exclude
 
-class Empresa(val empresaId: String,
-              val razaoSocial: String,
-              val cnpj: String,
-              val endereco: String,
-              val telefone: String,
-              val email: String,
-              val imagemEmpresa: Int)
+class Empresa(var empresaId: String,
+              var razaoSocial: String,
+              var cnpj: String,
+              var endereco: String,
+              var telefone: String,
+              var email: String,
+              var imagemEmpresa: Int)
 {
     constructor(): this("","","","", "", "",0)
 

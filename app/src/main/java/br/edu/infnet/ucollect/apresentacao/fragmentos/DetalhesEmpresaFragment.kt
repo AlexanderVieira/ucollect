@@ -69,6 +69,7 @@ class DetalhesEmpresaFragment : Fragment() {
             textView4.text = dados?.get(2)
             textView5.text = dados?.get(3)
             textView7.text = dados?.get(4)
+            //imageView2.setImageResource(dados?.get(5)!!.toInt())
         }
     }
 
