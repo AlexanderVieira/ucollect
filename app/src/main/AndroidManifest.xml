@@ -26,19 +26,26 @@
         <activity android:name=".apresentacao.activities.EmailFormActivity"/>
         <activity android:name=".apresentacao.activities.RegistroActivity"/>
         <activity android:name=".apresentacao.activities.LoginExternoActivity">
-        </activity>
-        <activity
-                android:name=".apresentacao.activities.MainActivity"
-                android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity> <!-- GOOGLE MAPS -->
+
+        </activity>
+        <activity
+                android:name=".apresentacao.activities.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <!-- GOOGLE MAPS -->
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key"/> <!-- FACEBOOK -->
+                android:value="@string/google_maps_key"/>
+
+        <!-- FACEBOOK -->
         <meta-data
                 android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>
