@@ -19,4 +19,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="FacebookLoginButton">
+        <item name="android:background">@color/verde_claro</item>
+        <item name="android:textColor">@color/white_background</item>
+    </style>
+
 </resources>

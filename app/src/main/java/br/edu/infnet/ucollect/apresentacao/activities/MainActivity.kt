@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -25,11 +27,13 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var mAuth: FirebaseAuth
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    lateinit var userProfile: FirebaseUser
     val CODE_REQUEST = 51
     val TAG = "MainActivity"
 
@@ -41,6 +45,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
         mAuth = FirebaseAuth.getInstance()
+
+        if (mAuth.currentUser != null){
+            userProfile = mAuth.currentUser!!
+        }
+
         //NetWorkTask(this).execute()
 
         self = this
@@ -57,6 +66,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+        val headView = navView.getHeaderView(0)
+
+        if (mAuth.currentUser != null){
+
+            var nomezin = headView.findViewById<TextView>(R.id.menu_id_apelido)
+            nomezin.text = "Meu perfil"
+            var emailzin = headView.findViewById<TextView>(R.id.menu_id_email)
+            emailzin.text = userProfile.email
+        }
+
+
+
     }
 
     // task background
