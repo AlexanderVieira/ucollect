@@ -39,12 +39,10 @@ class PerfilFragment : Fragment() {
                 var email = currentUser.email
                 perfil_nome_textView.setText(email)
             }
+
+
         }
 
-    }
-
-    override fun onStart() {
-        super.onStart()
         val listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 // nada
@@ -53,16 +51,18 @@ class PerfilFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()){
                     var contador = dataSnapshot.childrenCount
-                    perfil_itens_doados_textView.text = contador.toString()
+
+                    if (perfil_itens_doados_textView != null){
+                        perfil_itens_doados_textView.text = contador.toString()
+                    }
                 } else {
                     perfil_itens_doados_textView.text = "0"
                 }
             }
         }
-
         myListener = bancoDadosRef.addValueEventListener(listener)
-    }
 
+    }
 
     private fun setUpListeners(){
         perfil_adicionar_button.setOnClickListener {
