@@ -53,7 +53,10 @@ class PerfilFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()){
                     var contador = dataSnapshot.childrenCount
-                    perfil_itens_doados_textView.text = contador.toString()
+                    if (perfil_itens_doados_textView != null){
+                        perfil_itens_doados_textView.text = contador.toString()
+                    }
+
                 } else {
                     perfil_itens_doados_textView.text = "0"
                 }

@@ -22,6 +22,7 @@ import br.edu.infnet.ucollect.R
 import br.edu.infnet.ucollect.apresentacao.fragmentos.*
 import br.edu.infnet.ucollect.utils.LocationProviderUtil
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -199,8 +200,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @SuppressLint("MissingPermission")
     private fun getUserLocation(){
         fusedLocationProviderClient.lastLocation.addOnSuccessListener {
-            //show_permission.text = "${it.latitude}; ${it.longitude}"
-            Log.i(TAG, "Success Listener: ${it.latitude}; ${it.longitude}")
+
         }
     }
 
